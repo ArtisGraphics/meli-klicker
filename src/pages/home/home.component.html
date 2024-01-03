@@ -1,0 +1,18 @@
+<div class="w-screen h-screen flex flex-row justify-between p-16 bg-violet-700">
+  <div class="flex flex-col justify-evenly">
+    <app-shop-item [item]="items[0]" [feets]="feets$ | async"></app-shop-item>
+    <app-shop-item [item]="items[1]" [feets]="feets$ | async"></app-shop-item>
+    <app-shop-item [item]="items[2]" [feets]="feets$ | async"></app-shop-item>
+    <app-shop-item [item]="items[3]" [feets]="feets$ | async"></app-shop-item>
+  </div>
+  <div class="flex flex-col justify-center items-center gap-4">
+    <app-click-button></app-click-button>
+    <app-feet-count></app-feet-count>
+  </div>
+  <div class="flex flex-col justify-evenly">
+    <app-shop-item [item]="items[4]" [feets]="feets$ | async"></app-shop-item>
+    <app-shop-item [item]="items[5]" [feets]="feets$ | async"></app-shop-item>
+    <app-shop-item [item]="items[6]" [feets]="feets$ | async"></app-shop-item>
+    <app-shop-item [item]="items[7]" [feets]="feets$ | async"></app-shop-item>
+  </div>
+</div>

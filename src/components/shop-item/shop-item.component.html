@@ -1,0 +1,13 @@
+<div class="flex flex-row gap-4 rounded-lg bg-stone-800/50 border-stone-800/50 border text-white p-4 w-[500px]">
+  <img [src]="item.image" width="100" height="100" class="object-cover">
+  <div class="flex flex-col gap-2 w-full justify-center">
+    <span class="text-xl font-medium flex justify-between">
+      <span class="flex">{{item.name}} ({{item.quantity}})</span>
+      <span class="text-yellow-400 flex font-bold text-2xl">{{item.price | number}} <img src="assets/fuß.png" width="32" height="32"></span>
+    </span>
+    <span class="text-yellow-400/50 flex">{{item.multiplier}} <img class="object-contain" src="assets/fuß.png" width="16" height="16">/s</span>
+    <span class="text-white/80">{{item.description}}</span>
+    <button *ngIf="item.price > feets!" class="cursor-not-allowed bg-red-500 rounded-lg px-2 py-1">Zu teuer!</button>
+    <button *ngIf="item.price <= feets!" class="hover:bg-green-400 transition bg-green-600 rounded-lg px-2 py-1" (click)="buyItem(item)">Kaufen</button>
+  </div>
+</div>

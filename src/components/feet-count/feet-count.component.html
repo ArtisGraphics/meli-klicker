@@ -1,0 +1,8 @@
+<div class="flex flex-col text-yellow-400 items-center font-bold text-5xl gap-4">
+  <span class="flex flex-row gap-2">
+    {{feets$ | async}} <img src="assets/fuß.png" class="object-cover" width="32" height="32">
+  </span>
+  <span class="flex flex-row text-sm opacity-75">
+    (+{{feetEverySecond$ | async}} <img src="assets/fuß.png" width="16" height="16">/s)
+  </span>
+</div>
