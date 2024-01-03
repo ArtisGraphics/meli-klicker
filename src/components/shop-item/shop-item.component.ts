@@ -19,13 +19,21 @@ export class ShopItemComponent {
   @Input() feets: number | null = 0;
   @Input() item!: ShopItemModel;
 
-  constructor(private shopService: ShopService) {
+  constructor(private shopService: ShopService, private clickService: ClickService) {
 
   }
 
 
   buyItem(item: ShopItemModel) {
     item.quantity++;
+    let audio = new Audio();
+    audio.src = "../assets/buy.mp3";
+    audio.load();
+    audio.play();
     this.shopService.buyItem(item);
+
+    if(item.name == "Simba") {
+      this.clickService.isWon()
+    }
   }
 }

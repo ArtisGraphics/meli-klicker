@@ -22,6 +22,7 @@ import {AsyncPipe, NgIf} from "@angular/common";
 export class HomeComponent {
 
   feets$ = this.clickService.feets
+  won$ = this.clickService.won
 
   items: ShopItemModel[] = [
     {
@@ -76,7 +77,7 @@ export class HomeComponent {
       price: 70000000,
       quantity: 0,
       multiplier: 1000000,
-      description: 'Shoes to help you walk faster',
+      description: 'Die Combo macht dich so platt.',
       image: 'https://www.mobafire.com/images/champion/square/ahri.png'
     } as ShopItemModel,
     {
@@ -93,5 +94,9 @@ export class HomeComponent {
     setInterval(() => {
       this.clickService.feets.next(this.clickService.feets.value + this.clickService.feetEverySecond.value);
     }, 1000);
+  }
+
+  goToYuuki() {
+    window.location.href = 'https://www.twitch.tv/nohyuukii';
   }
 }
