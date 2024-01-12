@@ -10,14 +10,20 @@ import {ClickService} from "../../services/click.service";
   styleUrl: './click-button.component.scss'
 })
 export class ClickButtonComponent {
+  enabledClick: boolean = true;
 
   constructor(private ClickService: ClickService) {
   }
   addClick() {
+    this.enabledClick = false;
     let audio = new Audio();
-    audio.src = "../assets/terraria.mp3";
+    audio.src = "../assets/pop.mp3"
+    audio.volume = 0.1;
     audio.load();
     audio.play();
     this.ClickService.addClick();
+    setTimeout(() => {
+      this.enabledClick = true;
+    }, 100)
   }
 }

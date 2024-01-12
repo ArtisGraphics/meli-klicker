@@ -1,13 +1,29 @@
-<div class="flex flex-row gap-4 rounded-lg bg-violet-500/50 border-violet-500/80 border text-white p-4 w-[500px]">
-  <img [src]="item.image" width="150" height="150" class="object-contain rounded-xl">
-  <div class="flex flex-col gap-2 w-full justify-between">
+<div class="flex flex-col rounded-lg border-violet-500/80 border bg-violet-500/50 p-4 gap-2">
+  <div class="flex flex-row gap-4 text-white w-[500px]">
+    <img [src]="item.image" width="150" height="150" class="object-contain rounded-xl">
+    <div class="flex flex-col gap-2 w-full justify-between">
     <span class="text-xl font-medium flex justify-between">
       <span class="flex text-xl">{{item.name}} ({{item.quantity}})</span>
       <span class="text-yellow-400 flex font-bold text-2xl">{{item.price | number}} <img src="assets/fuß.png" width="32" height="32"></span>
     </span>
-    <span class="text-yellow-400/50 flex">{{item.multiplier | number}} <img class="object-contain" src="assets/fuß.png" width="16" height="16">/s</span>
-    <span class="text-white/80">{{item.description}}</span>
-    <button *ngIf="item.price > feets!" class="cursor-not-allowed bg-red-500/50 rounded-lg px-2 py-1">Zu teuer!</button>
-    <button *ngIf="item.price <= feets!" class="hover:bg-green-500 transition bg-green-500/80 rounded-lg px-2 py-1" (click)="buyItem(item)">Kaufen</button>
+      <span class="text-yellow-400/50 flex">{{item.multiplier | number}} <img class="object-contain" src="assets/fuß.png" width="16" height="16">/s</span>
+      <span class="text-white/80">{{item.description}}</span>
+      <button *ngIf="item.price > feets!" class="cursor-not-allowed bg-red-500/50 rounded-lg px-2 py-1">Zu teuer!</button>
+      <button *ngIf="item.price <= feets!" class="hover:bg-green-500 transition bg-green-500/80 rounded-lg px-2 py-1" (click)="buyItem(item)">Kaufen</button>
+    </div>
+  </div>
+
+  <span class="text-white text-lg font-medium">Upgrades</span>
+  <div class="flex flex-row items-center gap-4 w-full">
+    <button class="relative rounded-lg bg-black/10 group w-40 items-center flex flex-col p-2" [ngClass]="upgrade.price > feets! && !upgrade.unlocked ? 'grayscale cursor-not-allowed':''" *ngFor="let upgrade of item.upgrades" (click)="buyUpgrade(item, upgrade)">
+      <img [src]="upgrade.image" class="w-16">
+      <span class="text-white text-sm uppercase w-full">{{upgrade.name}}</span>
+      <span class="text-yellow-400 uppercase flex">{{upgrade.price | number}} <img class="object-contain" src="assets/fuß.png" width="16" height="16"></span>
+      <div class="group-hover:flex flex-col absolute w-fit flex-nowrap p-2 bg-violet-950 text-white hidden bottom-full rounded-lg">
+        <span>{{upgrade.description}}</span>
+        <span class="flex items-center text-yellow-400">+{{upgrade.factorMultiply * item.multiplier * item.quantity}} <img class="object-contain" src="assets/fuß.png" width="16" height="16">/s/{{item.name}}</span>
+        <span class="flex items-center text-yellow-400">+{{upgrade.factorAdd * item.quantity}} <img class="object-contain" src="assets/fuß.png" width="16" height="16">/Click/{{item.name}}</span>
+      </div>
+    </button>
   </div>
 </div>

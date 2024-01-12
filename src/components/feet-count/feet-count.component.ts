@@ -15,6 +15,7 @@ export class FeetCountComponent {
 
   feets$ = this.clickService.feets
   feetEverySecond$ = this.clickService.feetEverySecond
+  feetEveryClick$ = this.clickService.feetClickMultiplier
   constructor(private clickService: ClickService) {
   }
 }

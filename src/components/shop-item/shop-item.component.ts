@@ -1,5 +1,5 @@
 import {Component, Input} from '@angular/core';
-import {ShopItemModel} from "../../models/shopItem.model";
+import {ShopItemModel, UpgradeModel} from "../../models/shopItem.model";
 import {ShopService} from "../../services/shop.service";
 import {ClickService} from "../../services/click.service";
 import {AsyncPipe, CommonModule} from "@angular/common";
@@ -28,11 +28,25 @@ export class ShopItemComponent {
     item.quantity++;
     let audio = new Audio();
     audio.src = "../assets/buy.mp3";
+    audio.volume = 0.4;
     audio.load();
     audio.play();
     this.shopService.buyItem(item);
+  }
 
-    if(item.name == "Simba") {
+  buyUpgrade(item: ShopItemModel, upgrade: UpgradeModel) {
+    if (this.feets! < upgrade.price || upgrade.unlocked) {
+      return;
+    }
+    let audio = new Audio();
+    audio.src = "../assets/buy.mp3";
+    audio.volume = 0.4;
+    audio.load();
+    audio.play();
+    upgrade.unlocked = true;
+    this.shopService.buyUpgrade(item, upgrade);
+
+    if(item.name == "SO TEUER!") {
       this.clickService.isWon()
     }
   }

@@ -3,7 +3,6 @@
     <app-shop-item [item]="items[0]" [feets]="feets$ | async"></app-shop-item>
     <app-shop-item [item]="items[1]" [feets]="feets$ | async"></app-shop-item>
     <app-shop-item [item]="items[2]" [feets]="feets$ | async"></app-shop-item>
-    <app-shop-item [item]="items[3]" [feets]="feets$ | async"></app-shop-item>
   </div>
   <div class="flex flex-col justify-center items-center gap-4">
     <app-click-button></app-click-button>
@@ -11,10 +10,9 @@
     <button class="px-4 py-2 rounded-lg bg-violet-500 text-white" (click)="goToYuuki()"><em class="font-medium">nohyuukii</em> live auf Twitch zusehen!</button>
   </div>
   <div class="flex flex-col justify-evenly">
+    <app-shop-item [item]="items[3]" [feets]="feets$ | async"></app-shop-item>
     <app-shop-item [item]="items[4]" [feets]="feets$ | async"></app-shop-item>
     <app-shop-item [item]="items[5]" [feets]="feets$ | async"></app-shop-item>
-    <app-shop-item [item]="items[6]" [feets]="feets$ | async"></app-shop-item>
-    <app-shop-item [item]="items[7]" [feets]="feets$ | async"></app-shop-item>
   </div>
   <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10 text-5xl bg-violet-900 text-white p-4 rounded-lg" *ngIf="won$ | async">
     DU HAST GEWONNEN!
